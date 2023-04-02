@@ -19,7 +19,7 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " \
              "(KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
 
 
-def run():
+def run() -> None:
     write_log(message="Программа запущена")
     start_time = time.time()
     main()
@@ -76,7 +76,7 @@ def input_credentials_and_login(browser: webdriver.Chrome) -> None:
     login_button.click()
 
 
-def get_all_object_links_given_keywords(browser: webdriver.Chrome):
+def get_all_object_links_given_keywords(browser: webdriver.Chrome) -> List[str]:
     current_url_s = get_current_url()
 
     if isinstance(current_url_s, str):
@@ -92,7 +92,7 @@ def get_all_object_links_given_keywords(browser: webdriver.Chrome):
     return all_object_links
 
 
-def get_current_url():
+def get_current_url() -> (str, dict):
     if len(keywords) == 0:
         current_url = "https://www.facebook.com/marketplace/category/propertyrentals?" \
                       "sortBy=creation_time_descend&exact=false"
@@ -152,7 +152,7 @@ def parse_new_object_links(new_object_links: List[str], browser: webdriver.Chrom
                 object_info["date_of_parsing"] = str(datetime.date.today())
                 object_info["id"] = str(current_place_id)
                 write_log(message=object_info)
-                record_data(element=object_info)
+                record_data(object_info=object_info)
         except Exception as ex:
             print(ex)
             continue
@@ -176,11 +176,11 @@ def get_object_info(browser: webdriver.Chrome, object_url: str) -> dict:
     address = bs_object.find(name="span", class_=option_class).text.strip()
     date_of_publication = get_date_of_publication(bs_object=bs_object, option_class=option_class)
     rating = get_rating(bs_object=bs_object)
-    date_of_registration = get_date_of_registration(bs_object=bs_object)
+    author_date_of_registration = get_author_date_of_registration(bs_object=bs_object)
 
     object_info = {"title": title, "price": price, "object_url": object_url, "description": description,
                    "animal_friendly": animal_friendly, "address": address, "date_of_publication": date_of_publication,
-                   "rating": rating, "date_of_registration": date_of_registration}
+                   "rating": rating, "author_date_of_registration": author_date_of_registration}
 
     return object_info
 
@@ -194,7 +194,7 @@ def check_valid_object(description: str) -> bool:
     return False
 
 
-def open_all_description(browser: webdriver.Chrome):
+def open_all_description(browser: webdriver.Chrome) -> None:
     bs_object = BeautifulSoup(browser.page_source, "lxml")
     description = bs_object.find(name="div", class_="xz9dl7a x4uap5 xsag5q8 xkhd6sd x126k92a").text
     check = "See more" in description
@@ -270,16 +270,17 @@ def get_rating(bs_object: BeautifulSoup) -> int:
     return 0
 
 
-def get_date_of_registration(bs_object: BeautifulSoup) -> str:
+def get_author_date_of_registration(bs_object: BeautifulSoup) -> str:
     str_bs_object = str(bs_object)
     start_index = str_bs_object.find("Joined Facebook in")
     str_bs_object_from_correct_start = str_bs_object[start_index:]
     end_index = str_bs_object_from_correct_start.find("</span>")
-    possible_date_of_registration = str_bs_object_from_correct_start[:end_index]
-    if "Joined Facebook in" in possible_date_of_registration:
-        date_of_registration = possible_date_of_registration.replace("<!-- -->", "")
-        return date_of_registration
-    return "No information"
+    possible_author_date_of_registration = str_bs_object_from_correct_start[:end_index]
+    if "Joined Facebook in" in possible_author_date_of_registration:
+        author_date_of_registration = possible_author_date_of_registration.replace("<!-- -->", "")
+        return author_date_of_registration
+    author_date_of_registration = "No information"
+    return author_date_of_registration
 
 
 if __name__ == "__main__":

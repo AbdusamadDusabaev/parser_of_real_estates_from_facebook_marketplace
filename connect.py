@@ -45,11 +45,12 @@ def get_links_and_max_places_id(response) -> dict:
     return {"links": links, "id": max(places_id)}
 
 
-def record_data(element: dict) -> None:
+def record_data(object_info: dict) -> None:
     sheet = get_sheet()
-    values = [[element["title"], element["price"], element["address"], element["animal_friendly"],
-              element["date_of_publication"], element["description"], element["object_url"],
-              element["rating"], element["date_of_registration"], element["date_of_parsing"], element["id"]]]
+    values = [[object_info["title"], object_info["price"], object_info["address"], object_info["animal_friendly"],
+               object_info["date_of_publication"], object_info["description"], object_info["object_url"],
+               object_info["rating"], object_info["author_date_of_registration"], object_info["date_of_parsing"],
+               object_info["id"]]]
     body = {"values": values}
     sheet.values().append(spreadsheetId=google_sheet_id, range=f"{page_name}!A1:I1",
                           valueInputOption="RAW", body=body).execute()

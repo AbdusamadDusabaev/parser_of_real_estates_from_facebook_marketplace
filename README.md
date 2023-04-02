@@ -1,6 +1,26 @@
 # Parsing of real estates from Facebook Marketplace (using Selenium) #
 
+<br>
+
+## Description ##
+
+The parser can parse real estate objects from Facebook Marketplace using Selenium and BeautifulSoup4 technology. Parsing collects the following information:
+1. Title
+2. Price
+3. Object URL
+4. Description
+5. Animal Friendly
+6. Address
+7. Date of publication
+8. Rating
+9. Author's date of registration
+
+You can also flexibly customize the filtering system for real estate objects using custom configurations for the parser. By default, the parser will write the received data to a Google Sheet. However, you can easily change this behavior if you need to.
+
+<br>
+
 ## Quick Start ##
+
 1. Download the git repository on your computer
 2. Download all requirements from <b> requirements.txt </b>
 3. Download <a href="https://chromedriver.chromium.org/downloads">chromedriver</a> in project directory and Google Chrome for your OS (Chromedriver must be compatible with your version of Chrome)
@@ -9,8 +29,10 @@
 6. Run script <b> main.py </b>
 7. Enjoy!)
 
+<br>
 
 ## Create a Google Sheet ##
+
 Parser write final result in Google Sheet. 
 <br>
 You google sheet should have the following structure:
@@ -24,8 +46,10 @@ You google sheet should have the following structure:
     </tr>
 </table>
 
+<br>
 
 ## Install requirements ##
+
 To install all requirements you must open terminal and in project directory input next command
     
     pip3 install -r requirements.txt
@@ -34,8 +58,10 @@ For Windows:
     
     pip install -r requirements.txt
 
+<br>
 
 ## Set your configurations ##
+
 In file <b> config.py </b> you can set all your configurations
 
 Your facebook account credentials
@@ -65,6 +91,8 @@ Select headless mode:
 
     headless_mode = True
 
+<br>
 
 ## Important! ##
+
 The html structure of the Facebook Marketplace page may change. This is necessary to change classes and search selectors. The structure of the parser does not come from this, but may require some manual changes to the code. Especially for this, I tried to make the code easy to read and easy to maintain. If you have any questions about the code and its implementation, write to me on Telegram
