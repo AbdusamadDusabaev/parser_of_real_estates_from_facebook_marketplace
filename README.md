@@ -7,13 +7,17 @@
 The parser can parse real estate objects from Facebook Marketplace using Selenium and BeautifulSoup4 technology. Parsing collects the following information:
 1. Title
 2. Price
-3. Object URL
-4. Description
-5. Animal Friendly
-6. Address
-7. Date of publication
+3. Address
+4. Animal Friendly
+5. Date of publication
+6. Description
+7. Object URL
 8. Rating
-9. Author's date of registration
+9. Date of author registration
+10. Chat to Author URL
+11. Date of parsing
+12. Relevance
+13. Images
 
 You can also flexibly customize the filtering system for real estate objects using custom configurations for the parser. By default, the parser will write the received data to a Google Sheet. However, you can easily change this behavior if you need to.
 
@@ -39,10 +43,10 @@ You google sheet should have the following structure:
 <br>
 <table>
     <tr>
-        <td>A</td> <td>B</td> <td>C</td> <td>D</td> <td>E</td> <td>F</td> <td>G</td> <td>H</td> <td>I</td> <td>J</td> <td>K</td>
+        <td>A</td> <td>B</td> <td>C</td> <td>D</td> <td>E</td> <td>F</td> <td>G</td> <td>H</td> <td>I</td> <td>J</td> <td>K</td> <td>L</td> <td>M</td> <td>N</td> <td>O</td>
     </tr>
     <tr>
-        <td>Title</td> <td>Price</td> <td>Address</td> <td>Animal Friendly</td> <td>Date of publication</td> <td>Description</td> <td>Object url</td> <td>Rating</td> <td>Date of author registration</td> <td>Date of parsing</td> <td>Place ID</td>
+        <td>Title</td> <td>Price</td> <td>Address</td> <td>Animal Friendly</td> <td>Date of publication</td> <td>Description</td> <td>Object URL</td> <td>Rating</td> <td>Date of author registration</td> <td>Chat to Author URL</td> <td>Date of parsing</td> <td>Place ID</td> <td>Relevance</td> <td>Main Image</td> <td>Images</td>
     </tr>
 </table>
 
@@ -90,6 +94,26 @@ Your service account api_json
 Select headless mode:
 
     headless_mode = True
+
+<br>
+
+
+## Save images ##
+
+The script automated save images. But if you want to run the script on server you must input "<b>root_server_image_url</b>" configuration.
+If you run the script on local computer, set this configuration:
+
+    root_server_image_url = ""
+
+<br>
+
+## Check the relevance of objects ##
+
+If you use the parser and your Google Sheet has accumulated a lot of records, then you most likely encountered a problem of their relevance.
+<br>
+That is why an additional functionality was added to the parser - checking the relevance of objects.
+<br>
+If you want to check the relevance of objects you must run "<b>check_the_relevance_of_objects.py</b>". This script check all objects in Google Sheet and rewrite field "Relevance"
 
 <br>
 

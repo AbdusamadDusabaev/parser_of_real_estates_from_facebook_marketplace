@@ -1,0 +1,14 @@
+[INFO] (2023-04-07 20:55:50.638837) Программа запущена
+[INFO] (2023-04-07 20:55:53.257927) Авторизуемся в системе...
+[INFO] (2023-04-07 20:56:00.794706) Авторизация завершена
+[INFO] (2023-04-07 20:56:05.903668) Релевантность объекта https://www.facebook.com/marketplace/item/1600014213810880/: listing is available
+[INFO] (2023-04-07 20:56:08.973991) Релевантность объекта https://www.facebook.com/marketplace/item/187649360710467/: listing is available
+[INFO] (2023-04-07 20:56:11.920200) Релевантность объекта https://www.facebook.com/marketplace/item/1295457541399979/: listing is available
+[INFO] (2023-04-07 20:56:14.867835) Релевантность объекта https://www.facebook.com/marketplace/item/246144228065541/: listing is available
+[INFO] (2023-04-07 20:56:17.906377) Релевантность объекта https://www.facebook.com/marketplace/item/1362644974521936/: listing is available
+[INFO] (2023-04-07 20:56:20.755645) Релевантность объекта https://www.facebook.com/marketplace/item/721564293047059/: listing is available
+[INFO] (2023-04-07 20:56:23.808607) Релевантность объекта https://www.facebook.com/marketplace/item/618236559747644/: listing is available
+[INFO] (2023-04-07 20:56:27.020737) Релевантность объекта https://www.facebook.com/marketplace/item/521850756820543/: listing is available
+[INFO] (2023-04-07 20:56:30.076016) Данные в таблице были успешно обновлены
+
+[INFO] (2023-04-07 20:56:30.139784) На работу программы ушло 39.50078797340393 секунд

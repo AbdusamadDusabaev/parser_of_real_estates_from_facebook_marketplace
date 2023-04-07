@@ -15,9 +15,10 @@ headless_mode = True  # Input True if you want to run parsing in headless mode o
 
 # =========================================== Optional Configurations ==================================================
 keywords = []   # Input your search keywords if available
-city_code = ''  # Input your city code for search if you select keywords
+city_code = 'nyc'  # Input your city code for search if you select keywords
 limit_of_pages_from_one_run = 1  # Input the limit of pages processed at one time
 filter_words = []  # Input the words that must be present in the description of the property.
 # If you want to disable the filter, leave the list empty
-
+root_server_image_url = ""  # Input root server images url.
+# If you run scripts in local computer, this parameter must be an empty string
 # ======================================================================================================================
